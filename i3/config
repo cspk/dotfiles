@@ -1,0 +1,223 @@
+# Use Super/Windows key as modifier
+set $mod Mod4
+
+font pango:Terminus Regular 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+workspace_layout stacked
+hide_edge_borders both
+focus_follows_mouse no
+show_marks yes
+workspace_auto_back_and_forth no
+no_focus [class="^chromium$"]
+
+# Colors
+client.focused #5a5a5a #5a5a5a #ffffff #282828 #5a5a5a
+client.focused_inactive #282828 #282828 #ffffff #282828 #282828
+client.unfocused #282828 #282828 #aaaaaa #282828 #282828
+
+set $term terminator
+set $term_exec terminator -x
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1:www"
+set $ws2 "2:dev"
+set $ws3 "3:doc"
+set $ws4 "4:sys"
+set $ws5 "5:var"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+p scratchpad show
+bindsym $mod+Shift+p move scratchpad
+bindsym $mod+Shift+q kill
+bindsym $mod+colon exec rofi -show
+
+# Selecting windows
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Moving windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Switching workspaces
+bindsym $mod+Ctrl+h workspace prev
+bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+l workspace next
+bindsym $mod+Ctrl+Right workspace next
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Window splitting
+bindsym $mod+y split h
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Layout management
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+bindsym $mod+d focus child
+
+# Music and volume controls
+bindsym $mod+Shift+plus exec "amixer set Master 2%+"
+bindsym XF86AudioRaiseVolume exec "amixer set Master 2%+"
+bindsym $mod+Shift+minus exec "amixer set Master 2%-"
+bindsym XF86AudioLowerVolume exec "amixer set Master 2%-"
+bindsym XF86AudioMute exec "amixer -D pulse set Master 1+ toggle"
+bindsym $mod+Shift+End exec "mpc toggle"
+bindsym XF86AudioPlay exec "mpc toggle"
+bindsym $mod+Shift+Home exec "mpc stop"
+bindsym XF86AudioStop exec "mpc stop"
+bindsym $mod+Shift+Next exec "mpc next"
+bindsym XF86AudioNext exec "mpc next"
+bindsym $mod+Shift+Prior exec "mpc prev"
+bindsym XF86AudioPrev exec "mpc prev"
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+Shift+n exec i3-input -F 'rename workspace to "%s"' -P 'New workspace name: '
+bindsym $mod+n exec i3-input -F 'title_format "%s"' -P 'New window title: '
+bindsym $mod+m exec i3-input -F 'mark --toggle "%s"' -P 'Mark name: '
+bindsym $mod+g exec i3-input -F '[con_mark="%s"] focus' -P 'Go to mark: '
+bindsym $mod+u [con_id=__focused__] unmark
+
+bindsym --release button2 kill
+bindsym button3 floating toggle
+
+for_window [class="Gnome-calculator"] floating enable
+
+mode "resize" {
+	bindsym l resize grow width 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym h resize shrink width 10 px or 10 ppt
+
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
+}
+
+mode "open" {
+	bindsym t exec $term; mode "default"
+	bindsym m exec $term_exec ncmpcpp; mode "default"
+	bindsym v exec $term_exec nvim; mode "default"
+	bindsym f exec $term_exec ranger; mode "default"
+	bindsym g exec $term_exec git-sh; mode "default"
+	bindsym h exec $term_exec htop; mode "default"
+	bindsym w exec chromium; mode "default"
+	bindsym l exec "QT_STYLE_OVERRIDE='' telegram-desktop"; mode "default"
+	bindsym p open; mode "default"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+o mode "default"
+}
+
+set $i3lock_cmd "i3lock --color=282828 --ignore-empty-password"
+
+mode "quit" {
+	bindsym p exec "systemctl poweroff -i"; mode "default"
+	bindsym r exec "systemctl reboot -i"; mode "default"
+	bindsym h exec $i3lock_cmd; exec "systemctl hibernate -i"; mode "default"
+	bindsym s exec $i3lock_cmd; exec "systemctl suspend -i"; mode "default"
+	bindsym l exec $i3lock_cmd; mode "default"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+q mode "default"
+}
+
+bindsym $mod+r mode "resize"
+bindsym $mod+o mode "open"
+bindsym $mod+q mode "quit"
+bindsym $mod+i exec fastchar
+
+bar {
+	position top
+	status_command "while sleep 0.3; do i3status.sh; done"
+	strip_workspace_numbers yes
+	separator_symbol " | "
+	colors {
+		background #282828
+		statusline #d8d8d8
+		separator #d8d8d8
+		focused_workspace #5a5a5a #5a5a5a #ffffff
+		inactive_workspace #222222 #222222 #aaaaaa
+		urgent_workspace #cc3636 #cc3636 #ffffff
+	}
+
+	bindsym button2 exec "amixer set Master toggle"
+	bindsym button4 exec "amixer set Master 2%+"
+	bindsym button5 exec "amixer set Master 2%-"
+	bindsym button3 exec "gsimplecal"
+}
+
+exec xfsettingsd
+exec keynav
+exec kbdd
+exec xkbset mousekeysaccel 1 4 200 15 0
+exec xkbset exp mousekeys
+exec xinput --set-int-prop `xinput list | grep 'Kensington' | grep -oe '[0-9][0-9]'` "libinput Natural Scrolling Enabled" 8 1
+exec --no-startup-id nitrogen --restore
+exec udiskie
+exec lxpolkit
