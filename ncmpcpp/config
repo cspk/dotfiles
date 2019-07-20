@@ -1,0 +1,11 @@
+ncmpcpp_directory = ~/.ncmpcpp
+
+mpd_host = localhost
+mpd_port = 6600
+mpd_music_dir = ~/music
+
+playlist_separate_albums = yes
+user_interface = alternative
+song_columns_list_format = (6f)[green]{NE} (50)[white]{t|f:Title} (20)[]{a} (20)[cyan]{b} (7f)[magenta]{l}
+mouse_support = no
+startup_screen = media_library
