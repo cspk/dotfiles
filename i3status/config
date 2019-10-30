@@ -7,21 +7,20 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
-        interval = 1
+	colors = false
+	interval = 1
 }
 
 order += "volume master"
-order += "tztime local"
+order += "time"
 
-tztime local {
-        #format = "%d.%m.%y %H:%M:%S"
-        format = "%H:%M:%S"
+time {
+	format = "%a %b %d %H:%M:%S"
 }
 
 volume master {
-        format = "vol: %volume"
-        format_muted = "muted: %volume"
-        device = "pulse:1"
+	format = "vol %volume"
+	format_muted = "muted %volume"
+	device = "pulse:0"
 }
 

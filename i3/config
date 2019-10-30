@@ -194,7 +194,7 @@ bindsym $mod+i exec fastchar
 
 bar {
 	position top
-	status_command "while sleep 0.3; do i3status.sh; done"
+	status_command "i3status.sh"
 	strip_workspace_numbers yes
 	separator_symbol " | "
 	colors {
