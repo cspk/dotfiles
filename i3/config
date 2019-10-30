@@ -164,7 +164,7 @@ mode "open" {
 	bindsym f exec $term_exec ranger; mode "default"
 	bindsym g exec $term_exec git-sh; mode "default"
 	bindsym h exec $term_exec htop; mode "default"
-	bindsym w exec chromium; mode "default"
+	bindsym w exec firefox; mode "default"
 	bindsym l exec "QT_STYLE_OVERRIDE='' telegram-desktop"; mode "default"
 	bindsym p open; mode "default"
 
