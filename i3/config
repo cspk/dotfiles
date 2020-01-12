@@ -181,6 +181,7 @@ mode "quit" {
 	bindsym h exec $i3lock_cmd; exec "systemctl hibernate -i"; mode "default"
 	bindsym s exec $i3lock_cmd; exec "systemctl suspend -i"; mode "default"
 	bindsym l exec $i3lock_cmd; mode "default"
+	bindsym u exec "dm-tool switch-to-greeter"; mode "default"
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
