@@ -190,7 +190,7 @@ mode "quit" {
 bindsym $mod+r mode "resize"
 bindsym $mod+o mode "open"
 bindsym $mod+q mode "quit"
-bindsym $mod+i exec fastchar
+bindsym $mod+i exec "sleep .1; fastchar"
 
 bar {
 	position top
