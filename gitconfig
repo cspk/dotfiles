@@ -1,0 +1,26 @@
+[user]
+	name = Pavel Serebryakov
+	email = cspk@list.ru
+[core]
+	autocrlf = false
+	safecrlf = false
+	pager = less -x5
+	hooksPath = ~/.config/git/hooks
+[alias]
+	hist = log --pretty=format:\"%ar %h %s\"
+	unstage = reset HEAD --
+	discard = checkout --
+	wip = commit -am "wip"
+	appraise = !/usr/local/bin/git-appraise
+[pull]
+	ff = only
+[push]
+	default = simple
+[color "diff"]
+	whitespace = red reverse
+[merge]
+	ff = false
+[color]
+	ui = auto
+[diff]
+	wsErrorHighlight = all
