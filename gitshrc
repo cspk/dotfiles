@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+# PROMPT =======================================================================
+
+PS1='`_git_workdir`@`_git_headname``_git_dirty`> '
+
+ANSI_RESET="\001$(git config --get-color "" "reset")\002"
+
+# detect whether the tree is in a dirty state. returns
+_git_dirty() {
+	if git status 2>/dev/null | fgrep -q 'nothing to commit'; then
+		return 0
+	fi
+	local dirty_marker="`git config gitsh.dirty || echo ' *'`"
+	_git_apply_color "$dirty_marker" "color.sh.dirty" "red"
+}
+
+_git_headname() {
+	local br=`git symbolic-ref -q HEAD 2>/dev/null`
+	local color
+	if [ -z "$br" ]; then
+		br=`git rev-parse --short HEAD 2>/dev/null`
+		color="yellow"
+	else
+		br=${br#refs/heads/}
+		color="green"
+	fi
+
+	_git_apply_color "$br" "color.sh.branch" "$color"
+}
+
+# detect working directory relative to working tree root
+_git_workdir() {
+	subdir=`git rev-parse --show-prefix 2>/dev/null`
+	subdir="${subdir%/}"
+	workdir="${PWD%/$subdir}"
+	_git_apply_color "${workdir/*\/}${subdir:+/$subdir}" "color.sh.workdir" "blue bold"
+}
+
+# determine whether color should be enabled. this checks git's color.ui
+# option and then color.sh.
+_git_color_enabled() {
+	[ `git config --get-colorbool color.sh true` = "true" ]
+}
+
+# apply a color to the first argument
+_git_apply_color() {
+	local output="$1" color="$2" default="$3"
+	if _git_color_enabled ; then
+		color=`_git_color "$color" "$default"`
+		echo -ne "${color}${output}${ANSI_RESET}"
+	else
+		echo -ne "$output"
+	fi
+}
+
+# retrieve an ANSI color escape sequence from git config
+_git_color() {
+	local color
+	color=`git config --get-color "$1" "$2" 2>/dev/null`
+	[ -n "$color" ] && echo -ne "\001$color\002"
+}
+
+gitalias c='git commit'
+gitalias cane='git commit -a --amend --no-edit'
+gitalias cne='git commit --amend --no-edit'
+gitalias ch='git checkout'
+gitalias sh='git stash'
+gitalias shl='git stash list'
+gitalias sw='git show'
+gitalias u='git reset HEAD --'
+gitalias dc='git checkout --'
+gitalias ri='git rebase -i'
+gitalias last='l -1'
+gitalias l='git log --pretty=oneline --abbrev-commit --no-decorate'
+gitalias ll='git log --format="%C(yellow)%h %C(reset)%<(60)%s %C(magenta)%ad" --date=format:"%d.%m.%y %T"'
+gitalias today='l --since="00:00"'
+gitalias td='today'
