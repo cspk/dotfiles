@@ -125,8 +125,8 @@ bind stash	a	?git stash apply %(stash)
 bind stash	p	?git stash pop %(stash)
 bind stash	d	?git stash drop %(stash)
 
-bind refs	c	?@git checkout %(branch)
 bind refs	d	?!git branch -D %(branch)
+bind refs   c	?!git checkout %(branch)
 bind refs   D   ?!git push -d %(remote) %(branch)
 bind refs   r   ?!git branch -f %(branch) "%(prompt Reset to branch: )"
 bind refs   p   ?!git push -u "%(prompt Push to repo: )" %(branch)
