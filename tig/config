@@ -109,7 +109,7 @@ bind status	c	?!git commit -v
 bind status	d	status-revert		# Revert changes in file
 bind status a   ?!git commit -av
 bind status m   ?!git commit -v --amend
-bind status f   ?!git commit --amend --no-edit
+bind status n   ?!git commit --amend --no-edit
 
 bind diff	@	:/^@@			# Jump to next (c)hunk
 bind diff	[	:toggle diff-context -1
