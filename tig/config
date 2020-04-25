@@ -137,3 +137,4 @@ bind refs   f   ?!git fetch
 bind refs   F   ?!git fetch --prune
 bind refs   M   ?!git merge --no-ff %(branch) --log
 bind refs   m   ?!git merge --ff %(branch)
+bind refs   l   ?!git branch --track %(branch) %(remote)/%(branch)
