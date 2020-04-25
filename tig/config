@@ -52,8 +52,6 @@ bind generic	<Enter>	enter			# Enter and open selected entry
 
 bind generic	<Down>	next			# Move to next
 bind generic	<Up>	previous		# Move to previous
-bind generic	<C-N>	next
-bind generic	<C-P>	previous
 bind generic	J	next
 bind generic	K	previous
 
