@@ -100,8 +100,6 @@ bind main   B   ?!git rebase %(commit)
 bind main   R   ?!git reset --hard %(commit)
 bind main   T   @git tag "%(prompt Tag message: )" %(commit)
 bind main   V   ?!git revert %(commit)
-bind main   F   !git fetch
-bind main   U   !git pull
 bind main   P   ?!git cherry-pick %(commit)
 
 bind status	u	status-update		# Stage/unstage changes in file
@@ -133,6 +131,8 @@ bind refs   D   ?!git push -d %(remote) %(branch)
 bind refs   r   ?!git branch -f %(branch) "%(prompt Reset to branch: )"
 bind refs   p   ?!git push -u "%(prompt Push to repo: )" %(branch)
 bind refs   u   ?!git fetch "%(prompt Pull from repo: )" %(branch):%(branch)
-bind refs   F   ?!git push -f %(remote)
+bind refs   U   ?!git fetch origin %(branch):%(branch)
+bind refs   f   ?!git fetch
+bind refs   F   ?!git fetch --prune
 bind refs   M   ?!git merge --no-ff %(branch) --log
 bind refs   m   ?!git merge --ff %(branch)
