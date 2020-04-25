@@ -130,6 +130,7 @@ bind refs   d	?!git branch -d %(branch)
 bind refs   D   ?!git push -d %(remote) %(branch)
 bind refs   r   ?!git branch -f %(branch) "%(prompt Reset to branch: )"
 bind refs   p   ?!git push -u "%(prompt Push to repo: )" %(branch)
+bind refs   P   ?!git push -u origin %(branch)
 bind refs   u   ?!git fetch "%(prompt Pull from repo: )" %(branch):%(branch)
 bind refs   U   ?!git fetch origin %(branch):%(branch)
 bind refs   f   ?!git fetch
