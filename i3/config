@@ -12,6 +12,7 @@ focus_follows_mouse no
 show_marks yes
 workspace_auto_back_and_forth no
 no_focus [class="^chromium$"]
+for_window [class="qjackctl"] floating enable
 
 # Colors
 client.focused #5a5a5a #5a5a5a #ffffff #282828 #5a5a5a
