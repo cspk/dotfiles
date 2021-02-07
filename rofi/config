@@ -1,4 +1,4 @@
-rofi.font: Terminus 10
+rofi.font: Terminus 12
 rofi.width: 100
 rofi.location: 2
 rofi.modi: run

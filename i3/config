@@ -1,7 +1,7 @@
 # Use Super/Windows key as modifier
 set $mod Mod4
 
-font pango:Terminus Regular 10
+font pango:Terminus Regular 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
