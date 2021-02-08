@@ -54,6 +54,13 @@
 (global-set-key (kbd "M-w") 'easy-kill)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 
+(global-total-lines-mode)
+(setq-default global-mode-string '(:eval (format "  %dL" total-lines)))
+
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default c-basic-offset 4)
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
