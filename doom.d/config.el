@@ -35,9 +35,9 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 (setq doom-font (font-spec :family "Terminus" :size 16 :weight 'normal)
-      doom-variable-pitch-font (font-spec :family "Liberation Sans") ; inherits `doom-font''s :size
-      doom-unicode-font (font-spec :family "Liberation Sans" :size 12)
-      doom-big-font (font-spec :family "Liberation Sans" :size 19))
+      doom-variable-pitch-font (font-spec :family "Terminus") ; inherits `doom-font''s :size
+      doom-unicode-font (font-spec :family "Terminus" :size 16 :weight 'normal)
+      doom-big-font (font-spec :family "Terminus" :size 19))
 
 (defun save-all ()
   (interactive)
