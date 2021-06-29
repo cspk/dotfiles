@@ -61,6 +61,9 @@
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
 
+(setq-default fci-rule-column 80)
+(add-hook 'prog-mode-hook 'fci-mode); set long line ruler
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one

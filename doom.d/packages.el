@@ -51,3 +51,4 @@
 
 (package! easy-kill)
 (package! total-lines)
+(package! fill-column-indicator)
