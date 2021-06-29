@@ -51,4 +51,5 @@
 
 (package! easy-kill)
 (package! total-lines)
+(package! go-mode)
 (package! fill-column-indicator)
