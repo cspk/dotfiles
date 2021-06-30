@@ -55,7 +55,19 @@
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 
 (global-total-lines-mode)
-(setq-default global-mode-string '(:eval (format "  %dL" total-lines)))
+
+(after! doom-modeline
+  (doom-modeline-def-segment total-line-count
+    (propertize (format " %dL" total-lines)
+                'face (if (doom-modeline--active) 'mode-line 'mode-line-inactive)))
+
+  (doom-modeline-def-modeline 'my-simple-line
+    '(buffer-info remote-host total-line-count buffer-position parrot selection-info)
+    '(misc-info minor-modes input-method buffer-encoding major-mode process vcs checker))
+
+  (defun setup-custom-doom-modeline ()
+     (doom-modeline-set-modeline 'my-simple-line 'default))
+  (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline))
 
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
