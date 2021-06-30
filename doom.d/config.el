@@ -51,6 +51,8 @@
 (setq-default blink-cursor-delay 1)
 (setq-default blink-cursor-interval 1)
 
+(setq mode-line-percent-position nil)
+
 (global-set-key (kbd "M-w") 'easy-kill)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 
