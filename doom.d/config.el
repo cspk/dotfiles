@@ -49,6 +49,8 @@
 
 (setq mode-line-percent-position nil)
 
+(setq projectile-project-search-path '("~/src/" "~/src/gcore"))
+
 (global-set-key (kbd "M-w") 'easy-kill)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 
