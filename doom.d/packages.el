@@ -53,3 +53,4 @@
 (package! total-lines)
 (package! go-mode)
 (package! fill-column-indicator)
+(package! super-save)

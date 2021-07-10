@@ -35,11 +35,7 @@
       doom-unicode-font (font-spec :family "Terminus" :size 16 :weight 'normal)
       doom-big-font (font-spec :family "Terminus" :size 19))
 
-(defun save-all ()
-  (interactive)
-  (save-some-buffers t))
-
-(add-function :after after-focus-change-function #'save-all)
+(super-save-mode 1)
 
 (setq-default cursor-type 'bar)
 (blink-cursor-mode t)
