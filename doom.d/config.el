@@ -51,6 +51,8 @@
 
 (global-set-key (kbd "M-w") 'easy-kill)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
+(global-set-key (kbd "C-<down>") 'scroll-up-line)
+(global-set-key (kbd "C-<up>") 'scroll-down-line)
 
 (global-total-lines-mode)
 
