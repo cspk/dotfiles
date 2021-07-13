@@ -56,6 +56,12 @@
 
 (global-total-lines-mode)
 
+(defun inhibit-save-message (f &rest args)
+  (let ((inhibit-message t))
+    (funcall f)))
+
+(advice-add 'save-buffer :around #'inhibit-save-message)
+
 (after! doom-modeline
   (doom-modeline-def-segment total-line-count
     (propertize (format " %dL" total-lines)
