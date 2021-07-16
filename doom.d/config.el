@@ -35,6 +35,7 @@
       doom-unicode-font (font-spec :family "Terminus" :size 16 :weight 'normal)
       doom-big-font (font-spec :family "Terminus" :size 19))
 
+(setq auto-save-default nil)
 (setq super-save-idle-duration 60)
 (setq super-save-auto-save-when-idle t)
 (super-save-mode 1)
