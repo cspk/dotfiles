@@ -101,10 +101,6 @@ bindsym $mod+a focus parent
 bindsym $mod+d focus child
 
 # Music and volume controls
-bindsym $mod+Shift+plus exec "amixer set Master 2%+"
-bindsym XF86AudioRaiseVolume exec "amixer set Master 2%+"
-bindsym $mod+Shift+minus exec "amixer set Master 2%-"
-bindsym XF86AudioLowerVolume exec "amixer set Master 2%-"
 bindsym XF86AudioMute exec "amixer -D pulse set Master 1+ toggle"
 bindsym $mod+Shift+End exec "mpc toggle"
 bindsym XF86AudioPlay exec "mpc toggle"
@@ -210,8 +206,6 @@ bar {
 	}
 
 	bindsym button2 exec "amixer set Master toggle"
-	bindsym button4 exec "amixer set Master 2%+"
-	bindsym button5 exec "amixer set Master 2%-"
 	bindsym button3 exec "gsimplecal"
 }
 
