@@ -19,8 +19,8 @@ time {
 }
 
 volume master {
-	format = "vol %volume"
-	format_muted = "muted %volume"
+	format = ""
+	format_muted = "vol muted"
 	device = "pulse"
 }
 
