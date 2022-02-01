@@ -56,3 +56,4 @@
 (package! super-save)
 (package! lua-mode)
 (package! clang-format)
+(package! yaml-mode)
