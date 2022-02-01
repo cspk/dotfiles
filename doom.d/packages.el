@@ -51,9 +51,6 @@
 
 (package! easy-kill)
 (package! total-lines)
-(package! go-mode)
 (package! fill-column-indicator)
 (package! super-save)
-(package! lua-mode)
 (package! clang-format)
-(package! yaml-mode)
