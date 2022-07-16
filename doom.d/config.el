@@ -83,6 +83,22 @@
 (setq-default fci-rule-column 80)
 (add-hook 'prog-mode-hook 'fci-mode); set long line ruler
 
+(defun kill-magit-diff-buffer-in-current-repo (&rest _)
+  "Delete the magit-diff buffer related to the current repo"
+  (let ((magit-diff-buffer-in-current-repo (magit-mode-get-buffer 'magit-diff-mode)))
+    (kill-buffer magit-diff-buffer-in-current-repo)))
+
+;; When 'C-c C-c' or 'C-c C-k' are pressed in the magit commit message buffer,
+;; delete the magit-diff buffer related to the current repo.
+(add-hook 'git-commit-setup-hook
+          (lambda ()
+            (add-hook 'with-editor-post-finish-hook #'kill-magit-diff-buffer-in-current-repo
+                      nil t)
+            (add-hook 'with-editor-post-cancel-hook #'kill-magit-diff-buffer-in-current-repo
+                      nil t)))
+
+(setq-default persp-autokill-persp-when-removed-last-buffer 'kill)
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
