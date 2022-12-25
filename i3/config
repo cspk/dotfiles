@@ -212,9 +212,6 @@ bar {
 exec xfsettingsd
 exec keynav
 exec kbdd
-exec xkbset mousekeysaccel 1 4 200 15 0
-exec xkbset exp mousekeys
-exec xinput --set-int-prop `xinput list | grep 'Kensington' | grep -oe '[0-9][0-9]'` "libinput Natural Scrolling Enabled" 8 1
 exec --no-startup-id nitrogen --restore
 exec udiskie
 exec lxpolkit
