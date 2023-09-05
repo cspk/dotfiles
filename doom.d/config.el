@@ -100,6 +100,11 @@
 
 (setq-default persp-autokill-persp-when-removed-last-buffer 'kill)
 
+(customize-set-variable
+ 'tramp-ssh-controlmaster-options
+ (concat
+   "-o ControlPath=/tmp/ssh-ControlPath-%%r@%%h:%%p "
+   "-o ControlMaster=auto -o ControlPersist=yes"))
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
